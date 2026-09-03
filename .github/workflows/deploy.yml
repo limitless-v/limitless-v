@@ -1,0 +1,30 @@
+name: Deploy Portfolio to Tor Onion
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Trigger Server Pull via SSM
+        run: |
+          aws ssm send-command \
+            --targets "Key=tag:Role,Values=tor-portfolio" \
+            --document-name "AWS-RunShellScript" \
+            --comment "Deploying update to Tor Onion site" \
+            --parameters 'commands=[
+              "cd /var/www/portfolio",
+              "git fetch origin main",
+              "git reset --hard origin/main",
+              "chown -R www-data:www-data /var/www/portfolio",
+              "chmod -R 755 /var/www/portfolio"
+            ]'
