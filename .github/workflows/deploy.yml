@@ -23,8 +23,8 @@ jobs:
             --comment "Deploying update to Tor Onion site" \
             --parameters 'commands=[
               "cd /var/www/portfolio",
-              "git fetch origin main",
-              "git reset --hard origin/main",
+              "git fetch origin master",
+              "git reset --hard origin/master",
               "chown -R www-data:www-data /var/www/portfolio",
               "chmod -R 755 /var/www/portfolio"
             ]'
