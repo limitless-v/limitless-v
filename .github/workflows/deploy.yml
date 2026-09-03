@@ -2,7 +2,7 @@ name: Deploy Portfolio to Tor Onion
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   deploy:
