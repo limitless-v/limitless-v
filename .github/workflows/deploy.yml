@@ -15,7 +15,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Trigger Server Pull via SSM
+      - name: Trigger Server Pull and Build via SSM
         run: |
           aws ssm send-command \
             --targets "Key=tag:Role,Values=tor-portfolio" \
@@ -25,6 +25,8 @@ jobs:
               "cd /var/www/portfolio",
               "git fetch origin master",
               "git reset --hard origin/master",
+              "npm ci --prefer-offline || npm install",
+              "npm run build",
               "chown -R www-data:www-data /var/www/portfolio",
               "chmod -R 755 /var/www/portfolio"
             ]'
