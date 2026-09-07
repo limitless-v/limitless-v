@@ -39,9 +39,9 @@ export const HERO_DATA = {
     'TypeScript',
     'React.js',
     'Flask',
-    'RAG / LLM APIs (academic)',
-    'C / C++ (academic)',
-    'Embedded Systems (exploring)'
+    'RAG / LLM APIs ',
+    'C / C++ ',
+    'Embedded Systems'
   ],
   ctaText: './get-in-touch',
   ctaHref: '#contact'
