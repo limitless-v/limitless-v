@@ -186,9 +186,10 @@ main {
 }
 
 section {
-  padding: 120px 8vw 120px;
+  padding: 80px 8vw;
   max-width: 1180px;
   position: relative;
+  scroll-margin-top: 44px;
 }
 
 .eyebrow {
@@ -508,11 +509,19 @@ h2.sec-title {
   }
 }
 
+#about {
+  padding-bottom: 32px;
+}
+
 .about-text p {
   color: var(--dim);
   line-height: 1.85;
   font-size: 15.5px;
   margin-bottom: 18px;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
 }
 
 .about-text strong {
@@ -557,6 +566,11 @@ h2.sec-title {
 }
 
 /* ---------- skills bento grid ---------- */
+#skills {
+  padding-top: 32px;
+  scroll-margin-top: 44px;
+}
+
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -1026,7 +1040,9 @@ html.has-cursor #cursor-wrap.hover-link ~ #cursor-dot {
 @media (max-width: 640px) {
   :root { --gutter: 34px; }
   .gutter { font-size: 9px; }
-  section { padding: 90px 6vw 90px; }
+  section { padding: 60px 6vw; }
+  #about { padding-bottom: 20px; }
+  #skills { padding-top: 20px; }
   .tab { padding: 0 12px; font-size: 11px; }
   .about-grid { gap: 40px; }
 }
